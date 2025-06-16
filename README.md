@@ -110,11 +110,3 @@ url = "http://exemplo.com"
 result = predict(url)
 print(f"A URL {url} {'é' if result else 'não é'} phishing.")
 ```
-
-## Contribuições
-
-Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar pull requests ou abrir issues se encontrar problemas.
-
-## Licença
-
-[Especifique a licença aqui]
