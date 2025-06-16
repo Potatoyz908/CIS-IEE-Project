@@ -51,6 +51,7 @@ kagglehub==0.3.12
 kaleido==0.2.1
 kiwisolver==1.4.8
 lightgbm==4.6.0
+nltk==3.9.1
 llvmlite==0.44.0
 MarkupSafe==3.0.2
 matplotlib==3.7.5

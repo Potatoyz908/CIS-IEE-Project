@@ -1,4 +1,3 @@
-version: '3'
 
 services:
   phishing-detection:
@@ -14,7 +13,7 @@ services:
     environment:
       - PYTHONPATH=/app
     command: python -m src.inference
-    restart: unless-stopped
+    restart: on-failure:3
 
   jupyter:
     build:
