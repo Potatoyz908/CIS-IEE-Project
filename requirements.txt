@@ -45,6 +45,8 @@ jsonschema-specifications==2025.4.1
 jupyter_client==8.6.3
 jupyter_core==5.8.1
 jupyterlab_widgets==3.0.15
+jupyter==1.0.0
+notebook==7.0.6
 kagglehub==0.3.12
 kaleido==0.2.1
 kiwisolver==1.4.8

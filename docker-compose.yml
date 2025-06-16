@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  phishing-detection:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./src:/app/src
+      - ./notebooks:/app/notebooks
+    ports:
+      - "8000:8000"  # Porta para o serviço de inferência
+    environment:
+      - PYTHONPATH=/app
+    command: python -m src.inference
+    restart: unless-stopped
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./src:/app/src
+      - ./notebooks:/app/notebooks
+    ports:
+      - "8888:8888"  # Porta para o Jupyter Notebook
+    environment:
+      - PYTHONPATH=/app
+    command: >
+      python -m jupyter notebook 
+      --ip=0.0.0.0 
+      --port=8888 
+      --no-browser 
+      --allow-root 
+      --NotebookApp.token='' 
+      --NotebookApp.password=''
+    restart: unless-stopped
