@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
+from email import policy
 from email.header import decode_header
 from email.parser import BytesParser, Parser
 import nltk
@@ -52,17 +53,23 @@ class EmailProcessor:
         Returns:
             Dicionário com os componentes extraídos do e-mail
         """
-        # Se o e-mail é uma string, parseá-lo
-        if isinstance(email_content, str):
-            if email_content.startswith('From '):  # Formato Unix mailbox
-                parser = Parser()
-                email_message = parser.parsestr(email_content)
-            else:  # Formato .eml
-                parser = BytesParser()
-                email_message = parser.parsestr(email_content.encode('utf-8'))
-        else:
-            # Assumir que já é um objeto email.message.EmailMessage
+        # Se já for um objeto EmailMessage, retorna diretamente
+        if hasattr(email_content, 'get'):
             email_message = email_content
+        
+        # Se for bytes, usar BytesParser
+        elif isinstance(email_content, bytes):
+            parser = BytesParser(policy=policy.default)
+            email_message = parser.parsebytes(email_content)
+        
+        # Se for string, usar Parser
+        elif isinstance(email_content, str):
+            parser = Parser(policy=policy.default)
+            email_message = parser.parsestr(email_content)
+        
+        else:
+            raise ValueError("Tipo de entrada inválido para parse_email")
+
         
         # Extrair informações básicas
         parsed_email = {
@@ -248,6 +255,10 @@ class EmailProcessor:
         else:
             features['html_length'] = 0
         
+        # Adicionar campos brutos para uso posterior (ex: embeddings SBERT)
+        features['subject'] = parsed_email.get('subject', '')
+        features['body_text'] = parsed_email.get('body_text', '')
+
         return features
     
     def _decode_field(self, field):
