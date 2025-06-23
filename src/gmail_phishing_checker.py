@@ -12,10 +12,11 @@ import smtplib
 from dotenv import load_dotenv
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from apscheduler.schedulers.blocking import BlockingScheduler
 from sentence_transformers import SentenceTransformer
 from src.email_processing import EmailProcessor
 
-# Baixar recurso necessário do NLT
+# Baixar recursos necessários do NLTK
 nltk.download('punkt_tab')
 nltk.download('punkt')
 
@@ -157,8 +158,14 @@ def main():
         send_log_email(
             subject="Log de Processamento de E-mail - Detecção de Phishing",
             body=log_text,
-            recipient_email="jmpn2004@gmail.com"
+            recipient_email=EMAIL_DESTINO
         )
 
 if __name__ == '__main__':
-    main()
+    scheduler = BlockingScheduler()
+    scheduler.add_job(main, 'interval', minutes=60)
+    print("Scheduler iniciado. O script verificará e-mails a cada uma hora.")
+    try:
+        scheduler.start()
+    except (KeyboardInterrupt, SystemExit):
+        print("Scheduler parado manualmente.")
