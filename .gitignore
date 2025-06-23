@@ -100,3 +100,7 @@ dmypy.json
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Google API
+credentials.json
+token.json

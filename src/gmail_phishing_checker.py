@@ -60,7 +60,7 @@ def main():
         parsed_email = email_processor.parse_email(raw_bytes)
         email_features = email_processor.extract_email_features(parsed_email)
 
-        # 🕒 Extração de horário e período
+        # Extração de horário e período
         timestamp = int(msg_raw['internalDate']) // 1000
         hora_recebimento = datetime.fromtimestamp(timestamp)
         hora = hora_recebimento.strftime("%H:%M")
