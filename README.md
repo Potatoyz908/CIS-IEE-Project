@@ -6,7 +6,7 @@
 
 ## 1. Introdução 💡
 
-Este repositório é dedicado ao desenvolvimento de um modelo que busque atingir um objetivo específico por meio da utilização do *Automated Machine Learning*. Este, se trata de um algoritmo de automatização de etapas técnicas do desenvolvimento de modelos, como pré-processamento, *feature selection*, ajuste de modelo, validação cruzada e seleção de métricas. O framework utilizado para o *AutoML* é o [*PyCaret*](https://pycaret.org), buscando sua simplicidade e integração com bibliotecas [*Python*](https://www.python.org). Para aprofundar o seu conhecimento, acesse a nossa [apresentação](presentation/slides.pdf) sobre *AutoML*.
+Este repositório é dedicado ao desenvolvimento de um modelo que busque atingir um objetivo específico por meio da utilização do *Automated Machine Learning*. Este, se trata de um algoritmo de automatização de etapas técnicas do desenvolvimento de modelos, como pré-processamento, *feature selection*, ajuste de modelo, validação cruzada e seleção de métricas. O framework utilizado para o *AutoML* é o [*PyCaret*](https://pycaret.org), buscando sua simplicidade e integração com bibliotecas [*Python*](https://www.python.org). Para se aprofundar no tema, acesse a nossa [apresentação](presentation/presentation.pdf) sobre *AutoML*.
 
 Inicialmente, este projeto esteve contido no escopo do 5° período do programa de *Trainee* do Capítulo Estudantil do [*Computational Intelligence Society* (*CIS*)](https://cis.ieee.org), vinculado ao [*IEEE*](https://www.ieee.org), na [*Universidade de Brasília* (*UnB*)](https://www.unb.br).
 
